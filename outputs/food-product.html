@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>嚴選冷凍海陸綜合禮盒｜美食電商</title>
+  <meta name="description" content="嚴選冷凍海陸綜合禮盒單品頁，呈現商品特色、商品規格、配送與付款資訊，適合送禮與居家備餐。">
+  <meta property="og:title" content="嚴選冷凍海陸綜合禮盒｜美食電商">
+  <meta property="og:description" content="冷凍海陸綜合禮盒單品頁，提供商品規格、描述與配送付款資訊。">
+  <meta property="og:type" content="product">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --page-bg: #fff7f1;
+      --accent: #d84f2a;
+      --accent-soft: #ffe7dc;
+      --accent-ink: #7c2d12;
+      --surface: rgba(255, 255, 255, 0.82);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(216, 79, 42, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(249, 115, 22, 0.12), transparent 24%),
+        linear-gradient(180deg, #fffaf6 0%, var(--page-bg) 100%);
+      color: #1f2937;
+    }
+
+    .topbar {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .page-shell {
+      position: relative;
+    }
+
+    .hero-panel {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 243, 235, 0.96));
+      border: 1px solid rgba(216, 79, 42, 0.14);
+      box-shadow: 0 20px 60px rgba(124, 45, 18, 0.08);
+      border-radius: 2rem;
+    }
+
+    .hero-badge {
+      color: var(--accent-ink);
+      background: var(--accent-soft);
+      border: 1px solid rgba(216, 79, 42, 0.12);
+    }
+
+    .product-visual {
+      min-height: 360px;
+      background: linear-gradient(145deg, #fff 0%, #fff3ec 100%);
+      border: 1px solid rgba(216, 79, 42, 0.12);
+      border-radius: 1.5rem;
+    }
+
+    .section-title {
+      color: #111827;
+      letter-spacing: -0.02em;
+    }
+
+    .info-card,
+    .spec-card {
+      background: var(--surface);
+      border: 1px solid rgba(31, 41, 55, 0.08);
+      box-shadow: 0 12px 32px rgba(31, 41, 55, 0.06);
+    }
+
+    .spec-table > :not(caption) > * > * {
+      padding: 0.9rem 1rem;
+    }
+
+    .spec-table tr > :first-child {
+      width: 34%;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      font-size: 1.25rem;
+    }
+
+    .note-list li + li {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== 頂部導覽列 開始 ===== -->
+  <header class="topbar border-bottom sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="#" aria-label="回到首頁">美食電商</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#foodNav" aria-controls="foodNav" aria-expanded="false" aria-label="切換導覽">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="foodNav">
+          <ul class="navbar-nav ms-auto gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#overview">商品特色</a></li>
+            <li class="nav-item"><a class="nav-link" href="#specs">商品規格</a></li>
+            <li class="nav-item"><a class="nav-link" href="#purchase">配送與付款</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ===== 頂部導覽列 結束 ===== -->
+
+  <main class="page-shell">
+    <!-- ===== 主視覺區塊 開始 ===== -->
+    <section class="container py-4 py-lg-5">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#" class="text-decoration-none">首頁</a></li>
+          <li class="breadcrumb-item"><a href="#" class="text-decoration-none">美食電商</a></li>
+          <li class="breadcrumb-item active" aria-current="page">單品頁</li>
+        </ol>
+      </nav>
+
+      <div class="hero-panel p-4 p-lg-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <figure class="product-visual d-flex align-items-center justify-content-center mb-0 p-4">
+              <svg viewBox="0 0 640 520" role="img" aria-label="嚴選冷凍海陸綜合禮盒示意圖" class="img-fluid" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="foodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff1e7"/>
+                    <stop offset="100%" stop-color="#ffd2bf"/>
+                  </linearGradient>
+                </defs>
+                <rect x="78" y="118" rx="32" ry="32" width="484" height="274" fill="url(#foodGrad)" stroke="#d84f2a" stroke-width="8"/>
+                <rect x="118" y="156" rx="24" ry="24" width="404" height="198" fill="#fff" opacity="0.88"/>
+                <circle cx="188" cy="252" r="56" fill="#d84f2a" opacity="0.14"/>
+                <circle cx="320" cy="252" r="56" fill="#fb923c" opacity="0.16"/>
+                <circle cx="452" cy="252" r="56" fill="#f97316" opacity="0.14"/>
+                <path d="M150 190h340" stroke="#fed7aa" stroke-width="12" stroke-linecap="round"/>
+                <path d="M150 314h260" stroke="#fed7aa" stroke-width="12" stroke-linecap="round"/>
+                <text x="320" y="445" text-anchor="middle" fill="#7c2d12" font-size="28" font-weight="700">冷凍海陸綜合禮盒</text>
+                <text x="320" y="484" text-anchor="middle" fill="#9a3412" font-size="18">適合送禮・居家備餐・節慶團聚</text>
+              </svg>
+            </figure>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <p class="text-uppercase fw-semibold mb-2" style="color: var(--accent-ink);">美食電商 / 單品頁</p>
+            <h1 class="display-5 fw-bold section-title mb-3">嚴選冷凍海陸綜合禮盒</h1>
+            <p class="lead text-secondary mb-4">
+              以冷凍海鮮與精選肉品搭配而成的綜合禮盒，主打方便備餐、節慶送禮與家庭分享。
+              全程採冷鏈配送，收到後可依標示快速冷凍保存。
+            </p>
+
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge rounded-pill hero-badge px-3 py-2">冷凍宅配限定</span>
+              <span class="badge rounded-pill hero-badge px-3 py-2">7 天鑑賞期說明</span>
+              <span class="badge rounded-pill hero-badge px-3 py-2">口味多元搭配</span>
+              <span class="badge rounded-pill hero-badge px-3 py-2">送禮自用兩相宜</span>
+            </div>
+
+            <div class="d-flex align-items-end gap-3 flex-wrap mb-4">
+              <div>
+                <span class="d-block text-secondary small">建議售價</span>
+                <strong class="display-6 fw-bold text-dark">NT$1,280</strong>
+              </div>
+              <div class="pb-2 text-success fw-semibold">付款完成後 2-3 個工作天出貨</div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-dark btn-lg px-4" href="#specs">看商品規格</a>
+              <a class="btn btn-outline-dark btn-lg px-4" href="#purchase">配送與付款</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 主視覺區塊 結束 ===== -->
+
+    <!-- ===== 商品特色區塊 開始 ===== -->
+    <section id="overview" class="container py-4">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <article class="info-card h-100 rounded-4 p-4">
+            <div class="feature-icon mb-3">❄️</div>
+            <h2 class="h5 fw-bold">冷鏈保存更安心</h2>
+            <p class="text-secondary mb-0">商品依冷凍規格出貨，收到後請盡快拆箱並放入冷凍保存，維持食材品質與口感。</p>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="info-card h-100 rounded-4 p-4">
+            <div class="feature-icon mb-3">🎁</div>
+            <h2 class="h5 fw-bold">送禮外觀體面</h2>
+            <p class="text-secondary mb-0">外盒設計適合節慶禮贈，無論是年節拜訪、生日聚餐或公司團購都很合適。</p>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="info-card h-100 rounded-4 p-4">
+            <div class="feature-icon mb-3">🍽️</div>
+            <h2 class="h5 fw-bold">備餐快速方便</h2>
+            <p class="text-secondary mb-0">內容物可分次烹調，適合忙碌上班族、家庭晚餐或假日聚會一次備齊。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 商品特色區塊 結束 ===== -->
+
+    <!-- ===== 商品描述與規格區塊 開始 ===== -->
+    <section id="specs" class="container py-4">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+          <article class="info-card rounded-4 p-4 p-lg-5 h-100">
+            <h2 class="section-title h3 fw-bold mb-3">商品描述</h2>
+            <p class="text-secondary mb-3">
+              這款嚴選冷凍海陸綜合禮盒，將海鮮與肉品做出平衡搭配，讓你在家也能快速端出有儀式感的一餐。
+              商品出貨時會依冷凍規格處理，適合想要囤貨備餐或送禮給重視實用性的親友。
+            </p>
+            <p class="text-secondary mb-4">
+              由於食品屬於易腐敗商品，收到後請先確認包裝完整性與保存狀態；若發現破包、退冰或異常，請立即拍照並聯繫客服。
+            </p>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="border rounded-4 p-3 h-100 bg-white">
+                  <h3 class="h6 fw-bold mb-2">產品內容</h3>
+                  <p class="mb-0 text-secondary">冷凍海鮮、精選肉品與配菜組合，份量適合 2-4 人共享。</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="border rounded-4 p-3 h-100 bg-white">
+                  <h3 class="h6 fw-bold mb-2">保存建議</h3>
+                  <p class="mb-0 text-secondary">請依包裝標示保存於冷凍環境，並盡量避免重複解凍與反覆冷藏。</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-5">
+          <aside class="spec-card rounded-4 p-4 p-lg-5 h-100">
+            <h2 class="section-title h4 fw-bold mb-3">商品規格</h2>
+            <div class="table-responsive">
+              <table class="table table-striped align-middle spec-table mb-0">
+                <tbody>
+                  <tr><th scope="row">商品名稱</th><td>嚴選冷凍海陸綜合禮盒</td></tr>
+                  <tr><th scope="row">商品類型</th><td>冷凍食品</td></tr>
+                  <tr><th scope="row">內容規格</th><td>6 入 / 盒</td></tr>
+                  <tr><th scope="row">保存方式</th><td>-18°C 冷凍保存</td></tr>
+                  <tr><th scope="row">保存期限</th><td>依商品包裝標示為準</td></tr>
+                  <tr><th scope="row">配送方式</th><td>冷凍宅配、冷藏宅配</td></tr>
+                  <tr><th scope="row">付款方式</th><td>信用卡、ATM 轉帳、超商代碼、LINE Pay、街口支付</td></tr>
+                  <tr><th scope="row">出貨時間</th><td>付款完成後 2-3 個工作天</td></tr>
+                  <tr><th scope="row">退貨提醒</th><td>拆封後通常不適用一般退貨規則</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 商品描述與規格區塊 結束 ===== -->
+
+    <!-- ===== 配送與付款區塊 開始 ===== -->
+    <section id="purchase" class="container py-4 pb-5">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <article class="info-card rounded-4 p-4 p-lg-5 h-100">
+            <h2 class="section-title h4 fw-bold mb-3">配送與付款</h2>
+            <ul class="note-list text-secondary mb-0 ps-3">
+              <li>付款方式包含信用卡、ATM 轉帳、超商代碼繳費、LINE Pay 與街口支付。</li>
+              <li>冷凍、冷藏、生鮮與易腐敗商品不提供超商取貨，請選擇對應冷鏈配送。</li>
+              <li>ATM 轉帳或超商代碼繳費需於訂單成立後 2 天內完成付款。</li>
+              <li>若收到包裝破損、退冰或異常情況，請先拍照留存並立即聯繫客服。</li>
+              <li>常溫商品與食品類商品的取消與退貨條件不同，實際以商品狀態與出貨進度判定。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="col-lg-6">
+          <article class="info-card rounded-4 p-4 p-lg-5 h-100">
+            <h2 class="section-title h4 fw-bold mb-3">購買須知</h2>
+            <ul class="note-list text-secondary mb-0 ps-3">
+              <li>鑑賞期自簽收商品當天起算 7 天，但食品若已拆封或非完整包裝，通常不適用一般退貨。</li>
+              <li>若屬商品瑕疵或寄錯，退貨運費由商家負擔；若是口味不合等非瑕疵退貨，運費由客人自行負擔。</li>
+              <li>出貨前常溫商品可取消；若商品已進入備貨或出貨流程，可能無法再修改或取消。</li>
+              <li>建議收到冷凍或冷藏商品後盡快拆箱並放入冷凍或冷藏保存。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 配送與付款區塊 結束 ===== -->
+  </main>
+
+  <footer class="border-top bg-white">
+    <div class="container py-4 text-center text-secondary small">
+      <p class="mb-1">美食電商單品頁示意</p>
+      <p class="mb-0">繁體中文靜態頁面・Bootstrap 5.3 CDN</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

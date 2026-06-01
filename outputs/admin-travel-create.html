@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>後台商品上架｜旅遊電商</title>
+  <meta name="description" content="旅遊電商後台單一商品上架示意頁，包含行程資訊、票券形式、退款規則與電子票券設定。">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ff;
+      --card: rgba(255, 255, 255, 0.9);
+      --accent: #7c3aed;
+      --accent-soft: #efe7ff;
+      --ink: #5b21b6;
+    }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.14), transparent 26%),
+        linear-gradient(180deg, #fcfbff 0%, var(--bg) 100%);
+      color: #1f2937;
+    }
+    .topbar { background: rgba(17, 24, 39, 0.96); backdrop-filter: blur(10px); }
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.08);
+      box-shadow: 0 16px 36px rgba(31, 41, 55, 0.08);
+      border-radius: 1.5rem;
+    }
+    .page-title { letter-spacing: -0.03em; }
+    .section-chip {
+      background: var(--accent-soft);
+      color: var(--ink);
+      border: 1px solid rgba(124, 58, 237, 0.12);
+    }
+    .preview-box {
+      border: 1px dashed rgba(124, 58, 237, 0.35);
+      background: linear-gradient(180deg, #fff 0%, #f3edff 100%);
+      border-radius: 1.25rem;
+    }
+    .help-list li + li { margin-top: .5rem; }
+    .form-label { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <!-- ===== 後台導覽列 開始 ===== -->
+  <header class="topbar text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand fw-bold" href="#">旅遊電商後台</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavTravel" aria-controls="adminNavTravel" aria-expanded="false" aria-label="切換導覽">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNavTravel">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">商品管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">供應商管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">票券設定</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ===== 後台導覽列 結束 ===== -->
+
+  <main class="container-fluid px-3 px-lg-4 py-4">
+    <!-- ===== 頁首資訊 開始 ===== -->
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+      <div>
+        <span class="badge rounded-pill section-chip mb-2">單一商品上架示意</span>
+        <h1 class="display-6 fw-bold page-title mb-2">新增旅遊商品</h1>
+        <p class="text-secondary mb-0">適合電子票券、自由行與行程商品的後台建立畫面，重點會放在使用期限、取消規則與兌換方式。</p>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary">儲存草稿</button>
+        <button class="btn btn-dark">送出審核</button>
+      </div>
+    </div>
+    <!-- ===== 頁首資訊 結束 ===== -->
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="panel p-4 p-lg-5">
+          <form>
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">商品基本資料</h2>
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <label class="form-label" for="name">商品名稱</label>
+                  <input id="name" type="text" class="form-control" value="東京 5 日 4 夜自由行電子票券組">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="price">售價</label>
+                  <input id="price" type="text" class="form-control" value="15990">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="category">商品分類</label>
+                  <select id="category" class="form-select">
+                    <option selected>自由行</option>
+                    <option>團體行程</option>
+                    <option>票券</option>
+                    <option>旅遊周邊</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="status">上架狀態</label>
+                  <select id="status" class="form-select">
+                    <option selected>待審核</option>
+                    <option>草稿</option>
+                    <option>立即上架</option>
+                    <option>下架</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">商品描述</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label" for="summary">商品簡介</label>
+                  <textarea id="summary" class="form-control" rows="4">以電子票券形式提供的自由行商品，付款後會寄送到 email，方便後續兌換與行程安排。</textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="includes">包含內容</label>
+                  <textarea id="includes" class="form-control" rows="5">住宿、交通、門票、餐券、接駁或體驗活動，依商品頁標示為準。</textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="restrictions">限制與規則</label>
+                  <textarea id="restrictions" class="form-control" rows="5">已出票或已啟動服務通常不可取消；是否可改日期與名單，依供應商規則處理。</textarea>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">票券與行程設定</h2>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label" for="voucher">票券形式</label>
+                  <select id="voucher" class="form-select">
+                    <option selected>電子票券</option>
+                    <option>實體票券</option>
+                    <option>行程確認單</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="emailtime">寄送時間</label>
+                  <input id="emailtime" type="text" class="form-control" value="30 分鐘至 2 小時">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="paymentlimit">付款期限</label>
+                  <input id="paymentlimit" type="text" class="form-control" value="24 小時內">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="departure">出發地 / 地區</label>
+                  <input id="departure" type="text" class="form-control" value="東京 / 日本">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="insurance">保險資訊</label>
+                  <select id="insurance" class="form-select">
+                    <option selected>依商品頁標示</option>
+                    <option>含基本旅平險</option>
+                    <option>不含保險</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">退款與客服設定</h2>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label" for="refund">退款作業</label>
+                  <input id="refund" type="text" class="form-control" value="3-5 個工作天">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="contact">客服聯繫</label>
+                  <input id="contact" type="text" class="form-control" value="客服信箱 / 電話">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="ship">配送方式</label>
+                  <select id="ship" class="form-select">
+                    <option selected>電子票券 email 寄送</option>
+                    <option>實體票券宅配</option>
+                    <option>飯店現場兌換</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="note1" checked>
+                    <label class="form-check-label" for="note1">啟用 7 天鑑賞期說明，但已使用或已兌換票券不適用退貨</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="note2" checked>
+                    <label class="form-check-label" for="note2">啟用出發日期與旅客資料變更說明</label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="h4 fw-bold mb-3">SEO 與發布</h2>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="slug">網址代稱</label>
+                  <input id="slug" type="text" class="form-control" value="travel-tokyo-free-trip">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="tags">標籤</label>
+                  <input id="tags" type="text" class="form-control" value="自由行,電子票券,旅遊,住宿">
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="meta">Meta Description</label>
+                  <textarea id="meta" class="form-control" rows="3">東京 5 日 4 夜自由行電子票券組後台上架示意，包含票券寄送、退款與行程規則。</textarea>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="panel p-4 mb-4">
+          <h2 class="h5 fw-bold mb-3">上架預覽</h2>
+          <div class="preview-box p-4">
+            <p class="small text-secondary mb-1">旅遊電商 / 電子票券</p>
+            <h3 class="h4 fw-bold mb-2">東京 5 日 4 夜自由行電子票券組</h3>
+            <p class="mb-2">售價 NT$15,990</p>
+            <p class="small text-secondary mb-0">付款後 30 分鐘至 2 小時內寄送。</p>
+          </div>
+        </div>
+        <div class="panel p-4">
+          <h2 class="h5 fw-bold mb-3">上架提醒</h2>
+          <ul class="help-list text-secondary ps-3 mb-0">
+            <li>請清楚標示票券寄送方式與時間。</li>
+            <li>已預訂、已出票或已啟動服務的取消規則要寫清楚。</li>
+            <li>若有旅平險，請明確寫出是否包含與保額。</li>
+            <li>建議備註可否修改日期、旅客資料與人數。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

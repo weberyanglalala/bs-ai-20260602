@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>後台商品上架｜傢俱電商</title>
+  <meta name="description" content="傢俱電商後台單一商品上架示意頁，包含家具尺寸、材質、組裝、保固與大型配送設定。">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: rgba(255, 255, 255, 0.9);
+      --accent: #8b5a2b;
+      --accent-soft: #f1e2d1;
+      --ink: #5b3a1d;
+    }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(139, 90, 43, 0.14), transparent 26%),
+        linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
+      color: #1f2937;
+    }
+    .topbar { background: rgba(17, 24, 39, 0.96); backdrop-filter: blur(10px); }
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.08);
+      box-shadow: 0 16px 36px rgba(31, 41, 55, 0.08);
+      border-radius: 1.5rem;
+    }
+    .page-title { letter-spacing: -0.03em; }
+    .section-chip {
+      background: var(--accent-soft);
+      color: var(--ink);
+      border: 1px solid rgba(139, 90, 43, 0.12);
+    }
+    .preview-box {
+      border: 1px dashed rgba(139, 90, 43, 0.35);
+      background: linear-gradient(180deg, #fff 0%, #f6eee3 100%);
+      border-radius: 1.25rem;
+    }
+    .help-list li + li { margin-top: .5rem; }
+    .form-label { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <!-- ===== 後台導覽列 開始 ===== -->
+  <header class="topbar text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand fw-bold" href="#">傢俱電商後台</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavFurniture" aria-controls="adminNavFurniture" aria-expanded="false" aria-label="切換導覽">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNavFurniture">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">商品管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">物流排程</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">組裝服務</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ===== 後台導覽列 結束 ===== -->
+
+  <main class="container-fluid px-3 px-lg-4 py-4">
+    <!-- ===== 頁首資訊 開始 ===== -->
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+      <div>
+        <span class="badge rounded-pill section-chip mb-2">單一商品上架示意</span>
+        <h1 class="display-6 fw-bold page-title mb-2">新增傢俱商品</h1>
+        <p class="text-secondary mb-0">這個頁面專注在大型家具商品建立流程，包含尺寸、材質、組裝方式、保固與配送排程。</p>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary">儲存草稿</button>
+        <button class="btn btn-dark">送出審核</button>
+      </div>
+    </div>
+    <!-- ===== 頁首資訊 結束 ===== -->
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="panel p-4 p-lg-5">
+          <form>
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">商品基本資料</h2>
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <label class="form-label" for="name">商品名稱</label>
+                  <input id="name" type="text" class="form-control" value="北歐風雙人床架">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="price">售價</label>
+                  <input id="price" type="text" class="form-control" value="8990">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="category">商品分類</label>
+                  <select id="category" class="form-select">
+                    <option selected>床架</option>
+                    <option>衣櫃</option>
+                    <option>沙發</option>
+                    <option>餐桌椅</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="status">上架狀態</label>
+                  <select id="status" class="form-select">
+                    <option selected>待審核</option>
+                    <option>草稿</option>
+                    <option>立即上架</option>
+                    <option>下架</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">商品描述</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label" for="summary">商品簡介</label>
+                  <textarea id="summary" class="form-control" rows="4">北歐風雙人床架，主打簡約外型、穩定結構與好搭配的淺木色。</textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="highlights">商品特色</label>
+                  <textarea id="highlights" class="form-control" rows="5">平整包裝、可簡易組裝、可加購到府組裝、適合臥室空間。</textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="notes">使用說明</label>
+                  <textarea id="notes" class="form-control" rows="5">請避免潮濕、泡水與超載使用；若少件可聯繫客服補寄。</textarea>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">尺寸、材質與組裝</h2>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label" for="size">尺寸</label>
+                  <input id="size" type="text" class="form-control" value="185 x 215 x 95 cm">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="material">材質</label>
+                  <input id="material" type="text" class="form-control" value="E1 板材 / 金屬結構">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="color">顏色</label>
+                  <input id="color" type="text" class="form-control" value="淺橡木色">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="assembly">組裝方式</label>
+                  <select id="assembly" class="form-select">
+                    <option selected>平整包裝，需簡易組裝</option>
+                    <option>到府組裝</option>
+                    <option>免組裝</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="floor">搬運需求</label>
+                  <select id="floor" class="form-select">
+                    <option selected>可安排樓層搬運，費用另計</option>
+                    <option>基本宅配到府</option>
+                    <option>含上樓服務</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <section class="mb-4">
+              <h2 class="h4 fw-bold mb-3">保固與物流設定</h2>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label" for="warranty">保固</label>
+                  <input id="warranty" type="text" class="form-control" value="板材 1 年 / 五金 6 個月">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="leadtime">出貨天數</label>
+                  <input id="leadtime" type="text" class="form-control" value="3-5 個工作天">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label" for="ship">配送方式</label>
+                  <select id="ship" class="form-select">
+                    <option selected>宅配到府 / 大型家具配送</option>
+                    <option>宅配到府</option>
+                    <option>大型家具配送</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="note1" checked>
+                    <label class="form-check-label" for="note1">啟用偏遠地區、無電梯樓層與人工搬運加價說明</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="note2" checked>
+                    <label class="form-check-label" for="note2">啟用大型家具退貨需先聯繫客服與回收費說明</label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="h4 fw-bold mb-3">SEO 與發布</h2>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="slug">網址代稱</label>
+                  <input id="slug" type="text" class="form-control" value="furniture-nordic-bedframe">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="tags">標籤</label>
+                  <input id="tags" type="text" class="form-control" value="床架,家具,組裝,大型配送">
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="meta">Meta Description</label>
+                  <textarea id="meta" class="form-control" rows="3">北歐風雙人床架後台上架示意，包含尺寸、材質、保固與大型家具配送資訊。</textarea>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="panel p-4 mb-4">
+          <h2 class="h5 fw-bold mb-3">上架預覽</h2>
+          <div class="preview-box p-4">
+            <p class="small text-secondary mb-1">傢俱電商 / 床架</p>
+            <h3 class="h4 fw-bold mb-2">北歐風雙人床架</h3>
+            <p class="mb-2">售價 NT$8,990</p>
+            <p class="small text-secondary mb-0">大型家具配送、可加購組裝服務。</p>
+          </div>
+        </div>
+        <div class="panel p-4">
+          <h2 class="h5 fw-bold mb-3">上架提醒</h2>
+          <ul class="help-list text-secondary ps-3 mb-0">
+            <li>請填清楚尺寸、材質與顏色。</li>
+            <li>大型家具配送與搬運加價要寫明。</li>
+            <li>組裝方式、補件流程與保固年限要標示清楚。</li>
+            <li>若可上樓或需樓層費，請在商品頁先說明。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

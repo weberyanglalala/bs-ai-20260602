@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>後台商品上架｜美食電商</title>
+  <meta name="description" content="美食電商後台單一商品上架示意頁，包含商品基本資料、食品規格、物流配送與 SEO 設定。">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff8f3;
+      --card: rgba(255, 255, 255, 0.9);
+      --accent: #d84f2a;
+      --accent-soft: #ffe6dc;
+      --ink: #7c2d12;
+    }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(216, 79, 42, 0.14), transparent 26%),
+        linear-gradient(180deg, #fffdfb 0%, var(--bg) 100%);
+      color: #1f2937;
+    }
+    .admin-shell { min-height: 100vh; }
+    .topbar {
+      background: rgba(31, 41, 55, 0.96);
+      backdrop-filter: blur(10px);
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(31, 41, 55, 0.08);
+      box-shadow: 0 16px 36px rgba(31, 41, 55, 0.08);
+      border-radius: 1.5rem;
+    }
+    .page-title { letter-spacing: -0.03em; }
+    .section-chip {
+      background: var(--accent-soft);
+      color: var(--ink);
+      border: 1px solid rgba(216, 79, 42, 0.12);
+    }
+    .preview-box {
+      border: 1px dashed rgba(216, 79, 42, 0.35);
+      background: linear-gradient(180deg, #fff 0%, #fff4ee 100%);
+      border-radius: 1.25rem;
+    }
+    .help-list li + li { margin-top: .5rem; }
+    .form-label { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <!-- ===== 後台導覽列 開始 ===== -->
+  <header class="topbar text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand fw-bold" href="#">美食電商後台</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavFood" aria-controls="adminNavFood" aria-expanded="false" aria-label="切換導覽">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNavFood">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#">商品管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">訂單管理</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">物流設定</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ===== 後台導覽列 結束 ===== -->
+
+  <main class="admin-shell">
+    <div class="container-fluid px-3 px-lg-4 py-4">
+      <!-- ===== 頁首資訊 開始 ===== -->
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+        <div>
+          <span class="badge rounded-pill section-chip mb-2">單一商品上架示意</span>
+          <h1 class="display-6 fw-bold page-title mb-2">新增美食商品</h1>
+          <p class="text-secondary mb-0">這是一個後台建立單一商品的靜態示意頁，重點放在食品規格、保存條件與冷鏈配送欄位。</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary">儲存草稿</button>
+          <button class="btn btn-dark">送出審核</button>
+        </div>
+      </div>
+      <!-- ===== 頁首資訊 結束 ===== -->
+
+      <div class="row g-4">
+        <!-- ===== 左側表單區塊 開始 ===== -->
+        <div class="col-lg-8">
+          <div class="panel p-4 p-lg-5">
+            <form>
+              <section class="mb-4">
+                <h2 class="h4 fw-bold mb-3">商品基本資料</h2>
+                <div class="row g-3">
+                  <div class="col-md-8">
+                    <label class="form-label" for="name">商品名稱</label>
+                    <input id="name" type="text" class="form-control" value="嚴選冷凍海陸綜合禮盒">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="price">售價</label>
+                    <input id="price" type="text" class="form-control" value="1280">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="category">商品分類</label>
+                    <select id="category" class="form-select">
+                      <option selected>冷凍食品</option>
+                      <option>常溫食品</option>
+                      <option>冷藏食品</option>
+                      <option>節慶禮盒</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="status">上架狀態</label>
+                    <select id="status" class="form-select">
+                      <option selected>待審核</option>
+                      <option>草稿</option>
+                      <option>立即上架</option>
+                      <option>下架</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="mb-4">
+                <h2 class="h4 fw-bold mb-3">商品描述</h2>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label" for="summary">商品簡介</label>
+                    <textarea id="summary" class="form-control" rows="4">冷凍海鮮與精選肉品搭配而成，適合送禮、囤貨與家庭備餐。</textarea>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="highlights">商品特色</label>
+                    <textarea id="highlights" class="form-control" rows="5">冷鏈配送、適合送禮、份量實用、收到後請盡快冷凍保存。</textarea>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="ingredients">主要內容物</label>
+                    <textarea id="ingredients" class="form-control" rows="5">海鮮、肉品、配菜組合；實際內容依批次與包裝標示為準。</textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section class="mb-4">
+                <h2 class="h4 fw-bold mb-3">食品規格與保存</h2>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label" for="weight">淨重</label>
+                    <input id="weight" type="text" class="form-control" value="約 1.2 kg">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="temp">保存溫度</label>
+                    <input id="temp" type="text" class="form-control" value="-18°C 冷凍保存">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="expiry">保存期限</label>
+                    <input id="expiry" type="text" class="form-control" value="依包裝標示">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="allergen">過敏原提醒</label>
+                    <input id="allergen" type="text" class="form-control" value="含甲殼類、魚類、蛋類">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="packing">包裝方式</label>
+                    <select id="packing" class="form-select">
+                      <option selected>冷凍保冷包裝</option>
+                      <option>冷藏保冷包裝</option>
+                      <option>常溫紙盒包裝</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section class="mb-4">
+                <h2 class="h4 fw-bold mb-3">物流與付款設定</h2>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label" for="ship">配送方式</label>
+                    <select id="ship" class="form-select">
+                      <option selected>冷凍宅配</option>
+                      <option>冷藏宅配</option>
+                      <option>常溫宅配</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="leadtime">出貨天數</label>
+                    <input id="leadtime" type="text" class="form-control" value="2-3 個工作天">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="pay">付款方式</label>
+                    <select id="pay" class="form-select">
+                      <option selected>信用卡 / ATM / 超商代碼 / 行動支付</option>
+                      <option>信用卡</option>
+                      <option>ATM 轉帳</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="note1" checked>
+                      <label class="form-check-label" for="note1">若收到包裝破損或退冰異常，啟用客服與補件流程</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="note2" checked>
+                      <label class="form-check-label" for="note2">啟用食品退貨說明，已拆封商品不適用一般退貨規則</label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 class="h4 fw-bold mb-3">SEO 與發布</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="slug">網址代稱</label>
+                    <input id="slug" type="text" class="form-control" value="food-frozen-combo-gift">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="tags">標籤</label>
+                    <input id="tags" type="text" class="form-control" value="冷凍食品,禮盒,宅配,送禮">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="meta">Meta Description</label>
+                    <textarea id="meta" class="form-control" rows="3">嚴選冷凍海陸綜合禮盒，提供完整食品規格、保存方式與冷鏈配送資訊。</textarea>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+        <!-- ===== 左側表單區塊 結束 ===== -->
+
+        <!-- ===== 右側資訊區塊 開始 ===== -->
+        <div class="col-lg-4">
+          <div class="panel p-4 mb-4">
+            <h2 class="h5 fw-bold mb-3">上架預覽</h2>
+            <div class="preview-box p-4">
+              <p class="small text-secondary mb-1">美食電商 / 冷凍食品</p>
+              <h3 class="h4 fw-bold mb-2">嚴選冷凍海陸綜合禮盒</h3>
+              <p class="mb-2">售價 NT$1,280</p>
+              <p class="small text-secondary mb-0">冷凍宅配、付款後 2-3 個工作天出貨。</p>
+            </div>
+          </div>
+          <div class="panel p-4">
+            <h2 class="h5 fw-bold mb-3">上架提醒</h2>
+            <ul class="help-list text-secondary ps-3 mb-0">
+              <li>食品類商品請先確認保存溫度與有效期限。</li>
+              <li>請標示是否含過敏原與包裝方式。</li>
+              <li>若商品破包、退冰或異常，需有客服處理說明。</li>
+              <li>冷凍、冷藏與生鮮商品請明確限制配送方式。</li>
+            </ul>
+          </div>
+        </div>
+        <!-- ===== 右側資訊區塊 結束 ===== -->
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
