@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>旅遊商品後台｜AI 文案生成示例</title>
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f6f7fb;
+    }
+
+    .page-shell {
+      max-width: 960px;
+    }
+
+    .description-box {
+      min-height: 220px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+
+    .preview-card {
+      white-space: pre-line;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container page-shell">
+      <span class="navbar-brand fw-bold">旅遊商品後台</span>
+      <span class="badge text-bg-primary">Demo</span>
+    </div>
+  </nav>
+
+  <main class="container page-shell py-5">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <h1 class="h4 mb-3">新增旅遊商品</h1>
+            <p class="text-secondary small mb-4">
+              輸入商品名稱後，點擊「AI 生成文案」，系統會自動產生商品描述正文。
+            </p>
+
+            <div class="mb-3">
+              <label for="productTitle" class="form-label">商品名稱</label>
+              <input
+                type="text"
+                class="form-control"
+                id="productTitle"
+                placeholder="例如：台北五日遊"
+                value="台北五日遊"
+              >
+              <div class="form-text">可輸入城市、天數、主題或季節，例如：京都賞櫻五日遊。</div>
+            </div>
+
+            <button id="generateBtn" type="button" class="btn btn-primary w-100">
+              AI 生成文案
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h2 class="h5 mb-0">商品描述正文</h2>
+              <button id="copyBtn" type="button" class="btn btn-outline-secondary btn-sm">
+                複製文案
+              </button>
+            </div>
+
+            <textarea
+              id="productDescription"
+              class="form-control description-box"
+              placeholder="AI 產生的商品描述會出現在這裡..."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <h2 class="h6 text-secondary mb-3">前台預覽</h2>
+            <h3 id="previewTitle" class="h4 fw-bold mb-3">台北五日遊</h3>
+            <div id="previewDescription" class="preview-card text-secondary">
+              尚未產生商品描述。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="copyToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">已複製商品描述</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const productTitleInput = document.getElementById('productTitle');
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const productDescription = document.getElementById('productDescription');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewDescription = document.getElementById('previewDescription');
+    const copyToast = new bootstrap.Toast(document.getElementById('copyToast'));
+
+    function generateTravelDescription(title) {
+      return `${title}帶你以輕鬆自在的步調探索旅程中的迷人風景與在地特色，從城市街景、文化景點到特色美食，都能一次感受旅行的豐富層次。無論是第一次出遊、安排短假旅行，或想為家人朋友規劃一趟省心行程，這項商品都能提供兼具休閒感與探索感的旅遊體驗。透過適中的旅程節奏，你可以享受放鬆時光，也能留下充實難忘的旅行回憶。`;
+    }
+
+    function setLoading(isLoading) {
+      generateBtn.disabled = isLoading;
+      generateBtn.innerHTML = isLoading
+        ? '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>生成中...'
+        : 'AI 生成文案';
+    }
+
+    function generateDescriptionByPromise(title) {
+      return new Promise((resolve) => {
+        // Demo 使用 setTimeout 模擬 AI API 回應時間。
+        // 實務上可在這裡改成 fetch('/api/generate-description', {...})。
+        setTimeout(() => {
+          resolve(generateTravelDescription(title));
+        }, 700);
+      });
+    }
+
+    function handleGenerationButtonClick() {
+      const title = productTitleInput.value.trim();
+
+      if (!title) {
+        productTitleInput.classList.add('is-invalid');
+        productTitleInput.focus();
+        return;
+      }
+
+      productTitleInput.classList.remove('is-invalid');
+      setLoading(true);
+
+      generateDescriptionByPromise(title)
+        .then((description) => {
+          productDescription.value = description;
+          previewTitle.textContent = title;
+          previewDescription.textContent = description;
+        })
+        .catch(() => {
+          productDescription.value = '文案生成失敗，請稍後再試。';
+          previewDescription.textContent = '文案生成失敗，請稍後再試。';
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+
+    function handleCopyButtonClick() {
+      const text = productDescription.value.trim();
+
+      if (!text) return;
+
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          copyToast.show();
+        })
+        .catch(() => {
+          productDescription.select();
+          document.execCommand('copy');
+          copyToast.show();
+        });
+    }
+
+    function handleProductDescriptionInput() {
+      previewDescription.textContent = productDescription.value.trim() || '尚未產生商品描述。';
+    }
+
+    function handleProductTitleInput() {
+      previewTitle.textContent = productTitleInput.value.trim() || '未命名商品';
+    }
+
+    generateBtn.addEventListener('click', handleGenerationButtonClick);
+    copyBtn.addEventListener('click', handleCopyButtonClick);
+    productDescription.addEventListener('input', handleProductDescriptionInput);
+    productTitleInput.addEventListener('input', handleProductTitleInput);
+  </script>
+</body>
+</html>
